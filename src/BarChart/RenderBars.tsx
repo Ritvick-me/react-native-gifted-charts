@@ -85,7 +85,7 @@ const RenderBars = (props: RenderBarsPropsType) => {
   const itemOrPropsBarInnerComponent =
     item.barInnerComponent ?? props.barInnerComponent;
   const localBarInnerComponent = isFocused
-    ? (focusedBarConfig?.barInnerComponent ?? itemOrPropsBarInnerComponent)
+    ? focusedBarConfig?.barInnerComponent ?? itemOrPropsBarInnerComponent
     : itemOrPropsBarInnerComponent;
 
   const barMarginBottom =
@@ -133,19 +133,19 @@ const RenderBars = (props: RenderBarsPropsType) => {
                   ],
                 }
             : horizontal
-              ? {transform: [{rotate: '-90deg'}]}
-              : value < 0
-                ? {
-                    transform: [
-                      {rotate: '180deg'},
-                      {
-                        translateY: autoShiftLabels
-                          ? 0
-                          : 16.5 * xAxisTextNumberOfLines + 14,
-                      },
-                    ],
-                  }
-                : {},
+            ? {transform: [{rotate: '-90deg'}]}
+            : value < 0
+            ? {
+                transform: [
+                  {rotate: '180deg'},
+                  {
+                    translateY: autoShiftLabels
+                      ? 0
+                      : 16.5 * xAxisTextNumberOfLines + 14,
+                  },
+                ],
+              }
+            : {},
         ]}>
         {top ? (
           item.secondaryLabelComponent ? (
@@ -212,19 +212,19 @@ const RenderBars = (props: RenderBarsPropsType) => {
               ? {transform: [{rotate: '330deg'}]}
               : {transform: [{rotate: '60deg'}]}
             : horizontal
-              ? {transform: [{rotate: '-90deg'}]}
-              : value < 0
-                ? {
-                    transform: [
-                      {rotate: '180deg'},
-                      {
-                        translateY: autoShiftLabels
-                          ? 0
-                          : 16.5 * xAxisTextNumberOfLines + 14,
-                      },
-                    ],
-                  }
-                : {},
+            ? {transform: [{rotate: '-90deg'}]}
+            : value < 0
+            ? {
+                transform: [
+                  {rotate: '180deg'},
+                  {
+                    translateY: autoShiftLabels
+                      ? 0
+                      : 16.5 * xAxisTextNumberOfLines + 14,
+                  },
+                ],
+              }
+            : {},
         ]}>
         {top ? (
           item.secondaryLabelComponent ? (
@@ -274,7 +274,7 @@ const RenderBars = (props: RenderBarsPropsType) => {
           end={{x: 0, y: 1}}
           colors={[
             isFocused
-              ? (focusedBarConfig?.gradientColor ?? localGradientColor)
+              ? focusedBarConfig?.gradientColor ?? localGradientColor
               : localGradientColor,
             localFrontColor,
           ]}>
@@ -353,16 +353,19 @@ const RenderBars = (props: RenderBarsPropsType) => {
           ],
         }
       : item.value < 0
-        ? {
-            transform: [
-              {
-                translateY: Math.abs(item.value) * heightFactor,
-              },
-              {rotateZ: '180deg'},
-            ],
-          }
-        : null,
+      ? {
+          transform: [
+            {
+              translateY: Math.abs(item.value) * heightFactor,
+            },
+            {rotateZ: '180deg'},
+          ],
+        }
+      : null,
     side !== 'right' && {zIndex: data.length - index},
+    {
+      zIndex: item.topLabelComponent ? data.length : data.length - index,
+    },
   ];
 
   const pressDisabled =
@@ -495,22 +498,22 @@ const RenderBars = (props: RenderBarsPropsType) => {
             item.onPress
               ? item.onPress()
               : props.onPress
-                ? props.onPress(item, index)
-                : null;
+              ? props.onPress(item, index)
+              : null;
           }}
           onLongPress={() => {
             item.onLongPress
               ? item.onLongPress()
               : props.onLongPress
-                ? props.onLongPress(item, index)
-                : null;
+              ? props.onLongPress(item, index)
+              : null;
           }}
           onPressOut={() => {
             item.onPressOut
               ? item.onPressOut()
               : props.onPressOut
-                ? props.onPressOut(item, index)
-                : null;
+              ? props.onPressOut(item, index)
+              : null;
           }}
           style={barWrapperStyle}>
           {barContent()}

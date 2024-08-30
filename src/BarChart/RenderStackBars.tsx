@@ -93,8 +93,8 @@ const RenderStackBars = (props: StackedBarChartPropsType) => {
               ? {transform: [{rotate: '330deg'}]}
               : {transform: [{rotate: '60deg'}]}
             : horizontal
-              ? {transform: [{rotate: '-90deg'}]}
-              : {},
+            ? {transform: [{rotate: '-90deg'}]}
+            : {},
         ]}>
         {item.labelComponent ? (
           item.labelComponent()
@@ -270,6 +270,7 @@ const RenderStackBars = (props: StackedBarChartPropsType) => {
                 width: item.barWidth || props.barWidth || 30,
                 justifyContent: 'center',
                 alignItems: 'center',
+                zIndex: props.topLabelComponentZIndex || 1,
               },
               containsNegativeValue && {
                 transform: [{translateY: totalHeight * 2}],
@@ -313,7 +314,7 @@ const RenderStackBars = (props: StackedBarChartPropsType) => {
       <View
         pointerEvents={
           props.pointerConfig
-            ? (props.pointerConfig.pointerEvents ?? 'none')
+            ? props.pointerConfig.pointerEvents ?? 'none'
             : 'auto'
         }
         style={[

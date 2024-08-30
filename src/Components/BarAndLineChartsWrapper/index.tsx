@@ -55,6 +55,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
     onMomentumScrollEnd,
     nestedScrollEnabled,
     extraWidthDueToDataPoint = 0, // extraWidthDueToDataPoint will be receved from props onlhy in case of LineCharts, for other charts it will be undefined and will default to 0
+    verticalInterval,
   } = props;
 
   const {
@@ -120,9 +121,16 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
             ...horizSectionProps,
             onlyReferenceLines: false,
             renderReferenceLines: !referenceLinesOverChartContent,
+            showBackgroundRange: props.showBackgroundRange,
+            normalRangeColor: props.normalRangeColor,
+            normalRangeColorOpacity: props.normalRangeColorOpacity,
+            normaRangeBackgroundHeight: props.normaRangeBackgroundHeight,
+            normaRangeBackgroundWidth: props.normaRangeBackgroundWidth,
+            normaRangeBottomPosition: props.normaRangeBottomPosition,
           })
         : null}
       <ScrollView
+        {...props.scrollViewContainerStyles}
         onScrollBeginDrag={() => {
           setCanMomentum(true);
         }}
@@ -153,8 +161,8 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
                   (props.width ? 20 : 0) -
                   (data[data.length - 1]?.barWidth ?? barWidth ?? 0) / 2
                 : yAxisSide === yAxisSides.RIGHT
-                  ? 0
-                  : yAxisLabelWidth + yAxisThickness,
+                ? 0
+                : yAxisLabelWidth + yAxisThickness,
             position: 'absolute',
             bottom: chartType === chartTypes.LINE_BI_COLOR ? 0 : xAxisThickness,
           },
@@ -199,7 +207,10 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
         {...remainingScrollViewProps}>
         <Fragment>
           {showVerticalLines ? (
-            <RenderVerticalLines {...verticalLinesProps} />
+            <RenderVerticalLines
+              {...verticalLinesProps}
+              verticalInterval={verticalInterval}
+            />
           ) : null}
           {
             // Only For Bar Charts-

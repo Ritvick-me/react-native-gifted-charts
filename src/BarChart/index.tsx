@@ -22,6 +22,7 @@ export const BarChart = (props: BarChartPropsType) => {
       }
     },
   };
+  const verticalInterval = props.verticalLineInterval || 1;
 
   const {
     lineConfig,
@@ -348,6 +349,7 @@ export const BarChart = (props: BarChartPropsType) => {
             stackBorderBottomRightRadius={props.stackBorderBottomRightRadius}
             autoShiftLabelsForNegativeStacks={autoShiftLabelsForNegativeStacks}
             {...getPropsCommonForBarAndStack(item, index)}
+            topLabelComponentZIndex={props.topLabelComponentZIndex}
           />
         );
       });
@@ -390,6 +392,14 @@ export const BarChart = (props: BarChartPropsType) => {
       renderChartContent={renderChartContent}
       remainingScrollViewProps={remainingScrollViewProps}
       nestedScrollEnabled={props.nestedScrollEnabled}
+      verticalInterval={verticalInterval}
+      scrollViewContainerStyles={props.scrollViewContainerStyles}
+      showBackgroundRange={props.showBackgroundRange}
+      normalRangeColor={props.normalRangeColor}
+      normalRangeColorOpacity={props.normalRangeColorOpacity}
+      normaRangeBackgroundHeight={props.normaRangeBackgroundHeight}
+      normaRangeBackgroundWidth={props.normaRangeBackgroundWidth}
+      normaRangeBottomPosition={props.normaRangeBottomPosition}
     />
   );
 };

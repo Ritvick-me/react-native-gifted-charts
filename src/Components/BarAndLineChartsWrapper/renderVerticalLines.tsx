@@ -28,6 +28,7 @@ const RenderVerticalLines = (props: any) => {
     containerHeightIncludingBelowXAxis,
     totalWidth,
     xAxisLabelsVerticalShift,
+    verticalInterval,
   } = props;
 
   const getHeightOfVerticalLine = (index: number) => {
@@ -114,26 +115,31 @@ const RenderVerticalLines = (props: any) => {
             (chartType === chartTypes.BAR
               ? totalSpacing - 1
               : verticalLinesSpacing
-                ? verticalLinesSpacing * (index + 1)
-                : index * spacing + (initialSpacing - 2));
+              ? verticalLinesSpacing * (index + 1)
+              : index * spacing + (initialSpacing - 2));
 
-          return (
-            <Line
-              key={index}
-              x1={x}
-              y1={
-                extendedContainerHeight -
-                getHeightOfVerticalLine(index) +
-                heightAdjustmentDueToStrokeLinecap
-              }
-              x2={x}
-              y2={extendedContainerHeight - heightAdjustmentDueToStrokeLinecap}
-              stroke={verticalLinesColor || 'lightgray'}
-              strokeWidth={verticalLinesThickness || 2}
-              strokeDasharray={verticalLinesStrokeDashArray ?? ''}
-              strokeLinecap={verticalLinesStrokeLinecap}
-            />
-          );
+          if (index % verticalInterval === 0) {
+            return (
+              <Line
+                key={index}
+                x1={x}
+                y1={
+                  extendedContainerHeight -
+                  getHeightOfVerticalLine(index) +
+                  heightAdjustmentDueToStrokeLinecap
+                }
+                x2={x}
+                y2={
+                  extendedContainerHeight - heightAdjustmentDueToStrokeLinecap
+                }
+                stroke={verticalLinesColor || 'lightgray'}
+                strokeWidth={verticalLinesThickness || 2}
+                strokeDasharray={verticalLinesStrokeDashArray ?? ''}
+                strokeLinecap={verticalLinesStrokeLinecap}
+              />
+            );
+          }
+          return <></>;
         })}
       </Svg>
     </View>

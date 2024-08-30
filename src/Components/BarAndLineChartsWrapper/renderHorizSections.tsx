@@ -95,8 +95,8 @@ export const renderHorizSections = (props: horizSectionPropTypes) => {
           index === noOfSections
             ? styles.lastLeftPart
             : !index
-              ? {justifyContent: 'flex-start'}
-              : styles.leftPart,
+            ? {justifyContent: 'flex-start'}
+            : styles.leftPart,
           {
             borderColor: yAxisColor,
             backgroundColor: sectionColors?.[invertedIndex] ?? backgroundColor,
@@ -135,6 +135,20 @@ export const renderHorizSections = (props: horizSectionPropTypes) => {
                 rulesConfigArray[invertedIndex]?.dashWidth ?? dashWidth,
               dashGap: rulesConfigArray[invertedIndex]?.dashGap ?? dashGap,
               type: rulesConfigArray[invertedIndex]?.rulesType ?? rulesType,
+            }}
+          />
+        )}
+        {/* Normal Range Background */}
+        {props.showBackgroundRange && index === noOfSections && (
+          <View
+            style={{
+              backgroundColor: props.normalRangeColor,
+              opacity: props.normalRangeColorOpacity,
+
+              height: props.normaRangeBackgroundHeight,
+              width: props.normaRangeBackgroundWidth,
+              position: 'absolute',
+              bottom: props.normaRangeBottomPosition,
             }}
           />
         )}
@@ -191,7 +205,7 @@ export const renderHorizSections = (props: horizSectionPropTypes) => {
             borderRightColor: yAxisColor,
             borderTopColor: secondaryXAxis?.color ?? xAxisColor,
             borderTopWidth: secondaryXAxis
-              ? (secondaryXAxis.thickness ?? xAxisThickness)
+              ? secondaryXAxis.thickness ?? xAxisThickness
               : 0,
             backgroundColor: backgroundColor,
             width: (props.width || totalWidth - spacing) + endSpacing,
@@ -225,17 +239,17 @@ export const renderHorizSections = (props: horizSectionPropTypes) => {
               bottom:
                 (index - 0.5) *
                   (isBelow
-                    ? (secondaryYAxisConfig.negativeStepHeight ??
+                    ? secondaryYAxisConfig.negativeStepHeight ??
                       secondaryYAxisConfig.stepHeight ??
-                      0)
-                    : (secondaryYAxisConfig.stepHeight ?? 0)) +
+                      0
+                    : secondaryYAxisConfig.stepHeight ?? 0) +
                 (isBelow ? secondaryYAxisExtraHeightAtBottom : 0),
               width: secondaryYAxisConfig.yAxisLabelWidth,
               height: isBelow
-                ? (secondaryYAxisConfig.negativeStepHeight ??
+                ? secondaryYAxisConfig.negativeStepHeight ??
                   secondaryYAxisConfig.stepHeight ??
-                  0)
-                : (secondaryYAxisConfig.stepHeight ?? 0),
+                  0
+                : secondaryYAxisConfig.stepHeight ?? 0,
             },
             yAxisLabelContainerStyle,
           ]}>
