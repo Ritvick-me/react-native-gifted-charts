@@ -2269,6 +2269,19 @@ export const LineChart = (props: LineChartPropsType) => {
                       item.secondaryLabelComponent,
                     )
                 : null}
+              {props?.highlightedSection?.showBackgroundRange && (
+                <View
+                  style={{
+                    backgroundColor: props?.highlightedSection.backgroundColor,
+                    height: props?.highlightedSection.height,
+                    width: props?.highlightedSection.width,
+                    position: 'absolute',
+                    left: props?.highlightedSection.leftPos,
+                    bottom: props?.highlightedSection.bottomPos,
+                    opacity: props?.highlightedSection.opacity,
+                  }}
+                />
+              )}
             </View>
           );
         })}
