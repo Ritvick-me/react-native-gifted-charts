@@ -1,3 +1,62 @@
+# 🎉 1.4.33
+
+## 🐛 Bug fixes
+
+1. Fixed the issue- Secondary Y-axis labels misaligned for negative part (4th quadrant) and `yAxisLabelTexts` not working properly in the Secondary Y-axis. See https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts/issues/814#issuecomment-2330782150
+
+2. Fixed the issue- app crashes with interpolateMissingValues=false and areaChart=true. See https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts/issues/805
+
+---
+
+---
+
+---
+
+# 🎉 1.4.32
+
+## 🐛 Bug fixes
+
+1. Fixed the issue- topLabel component not displayed for animated stacked Bar charts. See https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts/issues/813
+
+2. Fixed the issue- Line in Bar chart not shifted downwards in case the Bar chart has negative values too. See https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts/issues/814
+
+3. Fixed the issue- Secondary Y axis labels incorrect when `yAxisLabelTexts` prop is used. See https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts/issues/814
+
+4. Fixed the issue- If both the first and the last pie sections are on pole, then the external labels overlap. See https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts/issues/806#issuecomment-2325420569
+
+5. Fixed the issue- Pattern inside Bars not displayed. See https://github.com/software-mansion/react-native-svg/issues/2437#issuecomment-2327155553
+
+6. Fixed the issue- animation not working for simple 2d Bar charts.
+
+---
+
+---
+
+---
+
+# 🎉 1.4.31
+
+## ✨ Features added-
+
+1. Pointer lines will now be displayed in both positive and negative values of the Line and Area charts (1st and 4th quadrant). See https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts/issues/799
+
+2. Added the property `avoidOverlappingOfLabels` to the prop `labelLineConfig` for Pie and donut charts. The default being true, it auto shifts overlapping external labels in Pie charts rendered using `showExternalLabels` and `externalLabelComponent`. See https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts/issues/801
+   **Note:** Only the labels overlapping near the poles (at the top and bottom) will be auto-shifted. Auto-shifting can be disabled by setting `avoidOverlappingOfLabels: false` inside the `labelLineConfig` object.
+
+## 🐛 Bug fixes
+
+1. Fixed the issue- Vertical lines displayed using the `showVerticalLines` prop are incomplete in Bar and Line charts when run on web (using Expo). See https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts/issues/794
+
+2. Fixed the issue- Line chart is shifted up and some data cannot be displayed (on web using Expo). See https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts/issues/778
+
+3. Fixed the issue- Focused section always getting the color of the 1st section on web (using Expo) See https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts/issues/800#issuecomment-2313079219
+
+---
+
+---
+
+---
+
 # 🎉 1.4.30
 
 ## ✨ Features added-

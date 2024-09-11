@@ -251,7 +251,8 @@ export const renderHorizSections = (props: horizSectionPropTypes) => {
                   0
                 : secondaryYAxisConfig.stepHeight ?? 0,
             },
-            yAxisLabelContainerStyle,
+            secondaryYAxisConfig.yAxisLabelContainerStyle ??
+              yAxisLabelContainerStyle,
           ]}>
           {secondaryYAxisConfig.showYAxisIndices && (index !== 0 || isBelow) ? (
             <View
@@ -267,7 +268,16 @@ export const renderHorizSections = (props: horizSectionPropTypes) => {
           <Text
             numberOfLines={secondaryYAxisConfig.yAxisTextNumberOfLines}
             ellipsizeMode={'clip'}
-            style={[secondaryYAxisConfig.yAxisTextStyle]}>
+            style={[
+              {
+                textAlign: 'left',
+                width:
+                  secondaryYAxisConfig.yAxisLabelContainerStyle?.width ??
+                  secondaryYAxisConfig.yAxisLabelWidth,
+                marginLeft: 10,
+              },
+              secondaryYAxisConfig.yAxisTextStyle,
+            ]}>
             {label}
           </Text>
         </View>
@@ -611,7 +621,6 @@ export const renderHorizSections = (props: horizSectionPropTypes) => {
                   borderLeftWidth: secondaryYAxisConfig.yAxisThickness,
                   height: containerHeight + yAxisExtraHeightAtTop,
                   bottom: stepHeight / -2,
-                  // backgroundColor:'red'
                 }}>
                 {!secondaryYAxisConfig.hideYAxisText
                   ? renderSecondaryYaxisLabels(secondaryHorizSections, false)
@@ -628,10 +637,11 @@ export const renderHorizSections = (props: horizSectionPropTypes) => {
             secondaryYAxisConfig.noOfSectionsBelowXAxis ? (
               <View
                 style={{
-                  width: secondaryYAxisConfig.yAxisLabelWidth,
+                  width:
+                    secondaryYAxisConfig.yAxisLabelWidth ?? yAxisLabelWidth,
                   left:
                     (width ? yAxisLabelWidth : yAxisLabelWidth - spacing) -
-                    yAxisLabelWidth,
+                    (secondaryYAxisConfig.yAxisLabelWidth ?? yAxisLabelWidth),
                   borderColor: secondaryYAxisConfig.yAxisColor,
                   borderLeftWidth: secondaryYAxisConfig.yAxisThickness,
                   height:
@@ -640,7 +650,8 @@ export const renderHorizSections = (props: horizSectionPropTypes) => {
                       stepHeight) *
                       secondaryHorizSectionsBelow.length +
                     secondaryYAxisExtraHeightAtBottom,
-                  bottom: -containerHeight - stepHeight * 0.84,
+                  bottom:
+                    -containerHeight - stepHeight / 2 - yAxisExtraHeightAtTop,
                 }}>
                 {!secondaryYAxisConfig.hideYAxisText
                   ? renderSecondaryYaxisLabels(
