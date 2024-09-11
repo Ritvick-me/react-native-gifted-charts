@@ -45,7 +45,20 @@ import {Pointer} from '../Components/common/Pointer';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
-export const LineChart = (props: LineChartPropsType) => {
+interface LineChartProps extends LineChartPropsType {
+  highlightedSection?: HighlightedSectionInterface;
+}
+export interface HighlightedSectionInterface {
+  showBackgroundRange: boolean;
+  backgroundColor: string;
+  height: number;
+  width: number;
+  leftPos: number;
+  bottomPos: number;
+  opacity: number;
+}
+
+export const LineChart = (props: LineChartProps) => {
   const scrollRef = props.scrollRef ?? useRef(null);
   const opacityValue = useMemo(() => new Animated.Value(0), []);
   const heightValue = useMemo(() => new Animated.Value(0), []);
