@@ -10,7 +10,16 @@ import {
   chartTypes,
 } from 'gifted-charts-core';
 
-export const renderHorizSections = (props: horizSectionPropTypes) => {
+interface horizSectionPropInterface extends horizSectionPropTypes {
+  showBackgroundRange?: boolean;
+  normalRangeColor?: string;
+  normalRangeColorOpacity?: number;
+  normaRangeBackgroundHeight?: number;
+  normaRangeBackgroundWidth?: number;
+  normaRangeBottomPosition?: number;
+}
+
+export const renderHorizSections = (props: horizSectionPropInterface) => {
   const {
     chartType,
     width,

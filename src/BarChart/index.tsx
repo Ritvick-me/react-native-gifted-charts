@@ -8,7 +8,19 @@ import {StripAndLabel} from '../Components/common/StripAndLabel';
 import {Pointer} from '../Components/common/Pointer';
 import {screenWidth} from '../utils';
 
-export const BarChart = (props: BarChartPropsType) => {
+interface BarChartProps extends BarChartPropsType {
+  verticalLineInterval?: number;
+  topLabelComponentZIndex?: number;
+  scrollViewContainerStyles?: any;
+  showBackgroundRange?: boolean;
+  normalRangeColor?: string;
+  normalRangeColorOpacity?: number;
+  normaRangeBackgroundHeight?: number;
+  normaRangeBackgroundWidth?: number;
+  normaRangeBottomPosition?: number;
+}
+
+export const BarChart = (props: BarChartProps) => {
   const heightValue = useMemo(() => new Animated.Value(0), []);
   const opacityValue = useMemo(() => new Animated.Value(0), []);
   const widthValue = useMemo(() => new Animated.Value(0), []);

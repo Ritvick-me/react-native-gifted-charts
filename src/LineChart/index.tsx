@@ -47,6 +47,7 @@ const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 interface LineChartProps extends LineChartPropsType {
   highlightedSection?: HighlightedSectionInterface;
+  selectedStripIndex?: number;
 }
 export interface HighlightedSectionInterface {
   showBackgroundRange: boolean;

@@ -21,7 +21,11 @@ if (Platform.OS === 'android') {
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const RenderStackBars = (props: StackedBarChartPropsType) => {
+interface StackedBarChartProps extends StackedBarChartPropsType {
+  topLabelComponentZIndex?: number;
+}
+
+const RenderStackBars = (props: StackedBarChartProps) => {
   const {
     barBackgroundPattern,
     patternId,

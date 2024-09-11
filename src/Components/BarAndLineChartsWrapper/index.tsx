@@ -10,7 +10,19 @@ import {
   useBarAndLineChartsWrapper,
 } from 'gifted-charts-core';
 
-const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
+interface BarAndLineChartsWrapperInterface
+  extends BarAndLineChartsWrapperTypes {
+  verticalInterval?: number;
+  scrollViewContainerStyles?: any;
+  showBackgroundRange?: boolean;
+  normalRangeColor?: string;
+  normalRangeColorOpacity?: number;
+  normaRangeBackgroundHeight?: number;
+  normaRangeBackgroundWidth?: number;
+  normaRangeBottomPosition?: number;
+}
+
+const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperInterface) => {
   const {
     chartType,
     containerHeight,
