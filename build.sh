@@ -19,3 +19,18 @@ find "$SRC_DIR" -type f \( -name '*.js' -o -name '*.d.ts' \) | while read -r fil
     mv "$file" "$DST_DIR/$rel_path"
     echo "Moved $file to $DST_DIR/$rel_path"
 done
+
+# Remove everything except the dist directory and package.json
+for item in *; do
+    if [ "$item" != "dist" ] && [ "$item" != "package.json" ]; then
+        if [ -d "$item" ]; then
+            rm -rf "$item"
+            echo "Removed directory $item"
+        else
+            rm "$item"
+            echo "Removed file $item"
+        fi
+    fi
+done
+
+echo "Cleanup complete. Only dist directory and package.json remain."
