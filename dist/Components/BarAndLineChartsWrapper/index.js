@@ -41,6 +41,9 @@ var BarAndLineChartsWrapper = function (props) {
             marginBottom: (xAxisLabelsHeight !== null && xAxisLabelsHeight !== void 0 ? xAxisLabelsHeight : xAxisTextNumberOfLines * 18) - 55, //This is to not let the Things that should be rendered below the chart overlap with it
         },
     });
+    var ScrollViewComp = !!props.CustomScrollViewComponent
+        ? props.CustomScrollViewComponent
+        : ScrollView;
     return (_jsxs(View, { style: [
             styles.container,
             horizontal && {
@@ -49,7 +52,7 @@ var BarAndLineChartsWrapper = function (props) {
             },
         ], children: [hideAxesAndRules !== true
                 ? renderHorizSections(__assign(__assign({}, horizSectionProps), { onlyReferenceLines: false, renderReferenceLines: !referenceLinesOverChartContent, showBackgroundRange: props.showBackgroundRange, normalRangeColor: props.normalRangeColor, normalRangeColorOpacity: props.normalRangeColorOpacity, normaRangeBackgroundHeight: props.normaRangeBackgroundHeight, normaRangeBackgroundWidth: props.normaRangeBackgroundWidth, normaRangeBottomPosition: props.normaRangeBottomPosition }))
-                : null, _jsx(ScrollView, __assign({}, props.scrollViewContainerStyles, { onScrollBeginDrag: function () {
+                : null, _jsx(ScrollViewComp, __assign({}, props.scrollViewContainerStyles, { onScrollBeginDrag: function () {
                     setCanMomentum(true);
                 }, nestedScrollEnabled: nestedScrollEnabled, onMomentumScrollEnd: function (_a) {
                     var nativeEvent = _a.nativeEvent;
@@ -80,6 +83,7 @@ var BarAndLineChartsWrapper = function (props) {
                     horizontal && {
                         width: ((_d = props.width) !== null && _d !== void 0 ? _d : totalWidth) + (props.width ? endSpacing : -20),
                     },
+                    __assign({}, props.scrollViewContentStyles),
                 ], contentContainerStyle: [
                     {
                         height: containerHeightIncludingBelowXAxis +

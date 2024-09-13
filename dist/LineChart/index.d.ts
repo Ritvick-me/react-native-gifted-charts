@@ -2,6 +2,8 @@ import { LineChartPropsType } from 'gifted-charts-core';
 interface LineChartProps extends LineChartPropsType {
     highlightedSection?: HighlightedSectionInterface;
     selectedStripIndex?: number;
+    CustomScrollViewComponent?: React.FC;
+    scrollViewContentStyles?: any;
 }
 export interface HighlightedSectionInterface {
     showBackgroundRange: boolean;

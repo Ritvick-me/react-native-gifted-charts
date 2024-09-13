@@ -927,5 +927,5 @@ export var LineChart = function (props) {
                         opacity: props === null || props === void 0 ? void 0 : props.highlightedSection.opacity,
                     } }))] }));
     };
-    return (_jsx(BarAndLineChartsWrapper, __assign({}, barAndLineChartsWrapperProps, { dataSet: props.dataSet, scrollRef: scrollRef, animatedWidth: widthValue, renderChartContent: renderChartContent, remainingScrollViewProps: remainingScrollViewProps })));
+    return (_jsx(BarAndLineChartsWrapper, __assign({}, barAndLineChartsWrapperProps, { dataSet: props.dataSet, scrollRef: scrollRef, animatedWidth: widthValue, renderChartContent: renderChartContent, remainingScrollViewProps: remainingScrollViewProps, CustomScrollViewComponent: props === null || props === void 0 ? void 0 : props.CustomScrollViewComponent, scrollViewContentStyles: props === null || props === void 0 ? void 0 : props.scrollViewContentStyles })));
 };
