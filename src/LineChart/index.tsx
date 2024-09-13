@@ -48,6 +48,8 @@ const AnimatedPath = Animated.createAnimatedComponent(Path);
 interface LineChartProps extends LineChartPropsType {
   highlightedSection?: HighlightedSectionInterface;
   selectedStripIndex?: number;
+  CustomScrollViewComponent?: React.FC;
+  scrollViewContentStyles?: any;
 }
 export interface HighlightedSectionInterface {
   showBackgroundRange: boolean;
@@ -2330,6 +2332,8 @@ export const LineChart = (props: LineChartProps) => {
       animatedWidth={widthValue}
       renderChartContent={renderChartContent}
       remainingScrollViewProps={remainingScrollViewProps}
+      CustomScrollViewComponent={props?.CustomScrollViewComponent}
+      scrollViewContentStyles={props?.scrollViewContentStyles}
     />
   );
 };

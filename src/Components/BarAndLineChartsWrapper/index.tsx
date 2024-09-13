@@ -20,6 +20,8 @@ interface BarAndLineChartsWrapperInterface
   normaRangeBackgroundHeight?: number;
   normaRangeBackgroundWidth?: number;
   normaRangeBottomPosition?: number;
+  CustomScrollViewComponent?: React.FC;
+  scrollViewContentStyles?: any;
 }
 
 const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperInterface) => {
@@ -119,6 +121,10 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperInterface) => {
     },
   });
 
+  const ScrollViewComp = !!props.CustomScrollViewComponent
+    ? props.CustomScrollViewComponent
+    : ScrollView;
+
   return (
     <View
       style={[
@@ -141,7 +147,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperInterface) => {
             normaRangeBottomPosition: props.normaRangeBottomPosition,
           })
         : null}
-      <ScrollView
+      <ScrollViewComp
         {...props.scrollViewContainerStyles}
         onScrollBeginDrag={() => {
           setCanMomentum(true);
@@ -183,6 +189,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperInterface) => {
             width:
               (props.width ?? totalWidth) + (props.width ? endSpacing : -20),
           },
+          {...props.scrollViewContentStyles},
         ]}
         contentContainerStyle={[
           {
@@ -258,7 +265,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperInterface) => {
           }
           {renderChartContent(containerHeightIncludingBelowXAxis)}
         </Fragment>
-      </ScrollView>
+      </ScrollViewComp>
       {referenceLinesOverChartContent
         ? renderHorizSections({...horizSectionProps, onlyReferenceLines: true})
         : null}
