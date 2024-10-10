@@ -56,9 +56,10 @@ export interface HighlightedSectionInterface {
   backgroundColor: string;
   height: number;
   width: number;
-  leftPos: number;
-  bottomPos: number;
-  opacity: number;
+  leftPos?: number;
+  bottomPos?: number;
+  topPos?: number;
+  opacity?: number;
 }
 
 export const LineChart = (props: LineChartProps) => {
@@ -2316,6 +2317,7 @@ export const LineChart = (props: LineChartProps) => {
               position: 'absolute',
               left: props?.highlightedSection.leftPos,
               bottom: props?.highlightedSection.bottomPos,
+              top: props?.highlightedSection.topPos,
               opacity: props?.highlightedSection.opacity,
             }}
           />
