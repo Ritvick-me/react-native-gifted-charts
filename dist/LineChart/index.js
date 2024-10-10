@@ -924,6 +924,7 @@ export var LineChart = function (props) {
                         position: 'absolute',
                         left: props === null || props === void 0 ? void 0 : props.highlightedSection.leftPos,
                         bottom: props === null || props === void 0 ? void 0 : props.highlightedSection.bottomPos,
+                        top: props === null || props === void 0 ? void 0 : props.highlightedSection.topPos,
                         opacity: props === null || props === void 0 ? void 0 : props.highlightedSection.opacity,
                     } }))] }));
     };

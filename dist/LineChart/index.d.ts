@@ -10,9 +10,10 @@ export interface HighlightedSectionInterface {
     backgroundColor: string;
     height: number;
     width: number;
-    leftPos: number;
-    bottomPos: number;
-    opacity: number;
+    leftPos?: number;
+    bottomPos?: number;
+    topPos?: number;
+    opacity?: number;
 }
 export declare const LineChart: (props: LineChartProps) => import("react/jsx-runtime").JSX.Element;
 export {};
